@@ -3,8 +3,8 @@
 
 **AutoSWE with SWARM**
 We are benchmarking the performance of automated software engineering against DevBench using SWARM AI for decision-making and task execution.
-The 5 evaluations in DevBench serve as the primary nodes in the system. Progression to the next node is determined by hardcoded logic or SWARM AI agents in "approve_" prefixed nodes.
-Tasks/Nodes
+The 5 evaluations in DevBench serve as the primary nodes in the system. Progression to the next node is determined by hardcoded logic or SWARM AI agents in "approve_" prefixed nodes.<br>
+**Tasks/Nodes** <br>
 1.	Software Design
 2.	Environment Setup
 3.	Implementation
