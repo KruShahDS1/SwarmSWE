@@ -10,10 +10,10 @@ Tasks/Nodes
 3.	Implementation
 4.	Acceptance Testing
 5.	Unit Testing <br>
-<br>
+
 **Control Flow.**
 In this system, SWARM AI handles the orchestration and decision-making at every stage of the software development cycle. Decision nodes, prefixed with approve_, are powered by SWARM agents to ensure context-aware and adaptive control flow.<br>
-<br>
+
 **Key Features:**
 •	**SWARM Decision Nodes**: Multi-agent intelligence drives decisions at approved_ nodes, ensuring robust control flow.
 •	**Dynamic Execution:** Nodes are processed sequentially, with SWARM agents managing transitions based on task completion and input conditions.
