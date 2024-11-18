@@ -9,35 +9,37 @@ Tasks/Nodes
 2.	Environment Setup
 3.	Implementation
 4.	Acceptance Testing
-5.	Unit Testing
+5.	Unit Testing <br>
+<br>
 **Control Flow.**
-In this system, SWARM AI handles the orchestration and decision-making at every stage of the software development cycle. Decision nodes, prefixed with approve_, are powered by SWARM agents to ensure context-aware and adaptive control flow.
+In this system, SWARM AI handles the orchestration and decision-making at every stage of the software development cycle. Decision nodes, prefixed with approve_, are powered by SWARM agents to ensure context-aware and adaptive control flow.<br>
+<br>
 **Key Features:**
 •	**SWARM Decision Nodes**: Multi-agent intelligence drives decisions at approved_ nodes, ensuring robust control flow.
 •	**Dynamic Execution:** Nodes are processed sequentially, with SWARM agents managing transitions based on task completion and input conditions.
 •	**Output Aggregation:** The system accumulates artifacts generated at each node into a final state for delivery.
-
+<br>
 **Requirements**
 1.	Obtain access to SWARM AI and its API keys.
 2.	Create a .env file to store your configuration (see .env.example).
 The .env file should include the following:
- 
+<br> 
 **How to Use**
 Running a Custom PRD
 To execute the program with a custom PRD.md file:
  
 Running the Example PRD
 To use the included example PRD.md file in the repo:
- 
+<br> 
 ________________________________________
-**What is SWARM AI?**
+**What is SWARM AI?** <br>
 **SWARM AI** is a cutting-edge multi-agent framework designed for intelligent decision-making and task automation. In this project, SWARM agents:
 •	Analyze Tasks: Understand and process the requirements of each node.
 •	Drive Decisions: Use context and logic to determine the workflow at approve_ nodes.
 •	Adapt Dynamically: Respond to changes in input, task status, or conditions during execution.
 This enables autoSWE to go beyond static workflows, providing adaptability and scalability in software engineering tasks.
 ________________________________________
-**Outputs**
+**Outputs** <br>
 The final state of the system includes all artifacts produced during the process, such as:
 •	Design Documentation
 •	Environment Configuration Files (e.g., .env)
@@ -45,17 +47,17 @@ The final state of the system includes all artifacts produced during the process
 •	Test Results (Unit and Acceptance Testing)
 These outputs are saved in the specified output directory.
 ________________________________________
-**Advantages of Using SWARM AI**
+**Advantages of Using SWARM AI** <br>
 •	Decentralized Decision-Making: SWARM agents collaborate to ensure robust, distributed task management.
 •	Dynamic Workflows: SWARM enables flexible transitions between nodes, eliminating rigid, predefined logic.
 •	Scalability: SWARM’s multi-agent architecture makes it ideal for handling complex and large-scale software engineering workflows.
 •	Efficiency: SWARM optimizes task execution by learning from context and improving with feedback.
 ________________________________________
-**Graph Visualization**
+**Graph Visualization** <br>
 Below is an example of how the control flow is managed by SWARM AI agents.
  
 ________________________________________
-**Future Directions**
+**Future Directions** <br>
 This implementation can be extended to:
 1.	Incorporate advanced SWARM learning algorithms to improve decision-making.
 2.	Enable real-time visualization of the SWARM decision flow.
