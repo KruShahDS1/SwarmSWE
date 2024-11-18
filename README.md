@@ -14,15 +14,15 @@ Tasks/Nodes
 **Control Flow.**
 In this system, SWARM AI handles the orchestration and decision-making at every stage of the software development cycle. Decision nodes, prefixed with approve_, are powered by SWARM agents to ensure context-aware and adaptive control flow.<br>
 
-**Key Features:**
-•	**SWARM Decision Nodes**: Multi-agent intelligence drives decisions at approved_ nodes, ensuring robust control flow.
-•	**Dynamic Execution:** Nodes are processed sequentially, with SWARM agents managing transitions based on task completion and input conditions.
+**Key Features:** <br>
+•	**SWARM Decision Nodes**: Multi-agent intelligence drives decisions at approved_ nodes, ensuring robust control flow.<br>
+•	**Dynamic Execution:** Nodes are processed sequentially, with SWARM agents managing transitions based on task completion and input conditions.<br>
 •	**Output Aggregation:** The system accumulates artifacts generated at each node into a final state for delivery.
 <br>
 **Requirements**
-1.	Obtain access to SWARM AI and its API keys.
-2.	Create a .env file to store your configuration (see .env.example).
-The .env file should include the following:
+1.	Obtain access to SWARM AI and its API keys.<br>
+2.	Create a .env file to store your configuration (see .env.example).<br>
+The .env file should include the following:<br>
 <br> 
 **How to Use**
 Running a Custom PRD
