@@ -33,25 +33,26 @@ To use the included example PRD.md file in the repo:
 <br> 
 ________________________________________
 **What is SWARM AI?** <br>
-**SWARM AI** is a cutting-edge multi-agent framework designed for intelligent decision-making and task automation. In this project, SWARM agents:
-•	Analyze Tasks: Understand and process the requirements of each node.
-•	Drive Decisions: Use context and logic to determine the workflow at approve_ nodes.
-•	Adapt Dynamically: Respond to changes in input, task status, or conditions during execution.
-This enables autoSWE to go beyond static workflows, providing adaptability and scalability in software engineering tasks.
+**SWARM AI** is a cutting-edge multi-agent framework designed for intelligent decision-making and task automation. <br>
+In this project, SWARM agents:<br>
+•	Analyze Tasks: Understand and process the requirements of each node.<br>
+•	Drive Decisions: Use context and logic to determine the workflow at approve_ nodes.<br>
+•	Adapt Dynamically: Respond to changes in input, task status, or conditions during execution. <br>
+This enables autoSWE to go beyond static workflows, providing adaptability and scalability in software engineering tasks.<br>
 ________________________________________
 **Outputs** <br>
-The final state of the system includes all artifacts produced during the process, such as:
-•	Design Documentation
-•	Environment Configuration Files (e.g., .env)
-•	Source Code
-•	Test Results (Unit and Acceptance Testing)
+The final state of the system includes all artifacts produced during the process, such as:<br>
+•	Design Documentation <br>
+•	Environment Configuration Files (e.g., .env) <br>
+•	Source Code <br>
+•	Test Results (Unit and Acceptance Testing) <br>
 These outputs are saved in the specified output directory.
 ________________________________________
 **Advantages of Using SWARM AI** <br>
-•	Decentralized Decision-Making: SWARM agents collaborate to ensure robust, distributed task management.
-•	Dynamic Workflows: SWARM enables flexible transitions between nodes, eliminating rigid, predefined logic.
-•	Scalability: SWARM’s multi-agent architecture makes it ideal for handling complex and large-scale software engineering workflows.
-•	Efficiency: SWARM optimizes task execution by learning from context and improving with feedback.
+•	Decentralized Decision-Making: SWARM agents collaborate to ensure robust, distributed task management.<br>
+•	Dynamic Workflows: SWARM enables flexible transitions between nodes, eliminating rigid, predefined logic.<br>
+•	Scalability: SWARM’s multi-agent architecture makes it ideal for handling complex and large-scale software engineering workflows.<br>
+•	Efficiency: SWARM optimizes task execution by learning from context and improving with feedback.<br>
 ________________________________________
 **Graph Visualization** <br>
 Below is an example of how the control flow is managed by SWARM AI agents.
