@@ -17,14 +17,14 @@ In this system, SWARM AI handles the orchestration and decision-making at every 
 **Key Features:** <br>
 •	**SWARM Decision Nodes**: Multi-agent intelligence drives decisions at approved_ nodes, ensuring robust control flow.<br>
 •	**Dynamic Execution:** Nodes are processed sequentially, with SWARM agents managing transitions based on task completion and input conditions.<br>
-•	**Output Aggregation:** The system accumulates artifacts generated at each node into a final state for delivery.
-<br>
+•	**Output Aggregation:** The system accumulates artifacts generated at each node into a final state for delivery.<br>
+
 **Requirements**
 1.	Obtain access to SWARM AI and its API keys.<br>
 2.	Create a .env file to store your configuration (see .env.example).<br>
 The .env file should include the following:<br>
-<br> 
-**How to Use**
+
+**How to Use** <br>
 Running a Custom PRD
 To execute the program with a custom PRD.md file:
  
