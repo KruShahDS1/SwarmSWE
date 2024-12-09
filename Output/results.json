@@ -1,0 +1,17 @@
+{
+    "Software Design": {
+        "design": "Basic architecture created based on PRD"
+    },
+    "Environment Setup": {
+        "setup": "Development environment configured based on design"
+    },
+    "Implementation": {
+        "implementation": "Core functionality implemented based on setup"
+    },
+    "Acceptance Testing": {
+        "acceptance": "Acceptance criteria met"
+    },
+    "Unit Testing": {
+        "unit_tests": "All unit tests passed"
+    }
+}
