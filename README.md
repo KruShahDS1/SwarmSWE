@@ -1,10 +1,6 @@
-# AutoSWE with SWARM AI
+# AutoSWE with SWARM AGENTIC FRAMEWORK
 
-
-![Alt Text](C:\SwarmSWE\assets\Devbench_workflow.png "Devbench workflow")
-
-
-
+Automating Software Development Cycle using SWARM Agentic Framework based on DevBench
 
 
 ## Overview
@@ -46,7 +42,9 @@ SwarmSWE/
 │   ├── Agent.py              # Base class for SWARM agents
 │   ├── design_agent.py       # Agent for software design tasks
 │   |── implementation_agent.py # Agent for implementation tasks  
-│   └── acceptance_agent.py   # Agent for acceptance testing tasks
+│   ├── setup_agent.py        # Agent for environment setup tasks
+|   |── implementation_agent.py # Agent for implementation tasks  
+│   |── acceptance_agent.py   # Agent for acceptance testing tasks
 |   |── unit_test_Agent.py    # Agent for unit testing tasks
 ├── Output/                   # Directory for generated artifacts
 ├── assets/                   # Assets used in the project
