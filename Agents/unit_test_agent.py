@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Literal, Any, Union
-from swarm import Node, Message
+from utils import SwarmState
 import logging
 
 
@@ -19,8 +19,8 @@ class UnitTestAgent(BaseModel):
 
 
 # Node to generate the unit tests
-@Node
-def unit_tests_node(state: CurrentState):
+
+def unit_tests(state: SwarmState):
     """
     Generate unit tests for the software based on the design documents.
     """
@@ -39,8 +39,8 @@ def unit_tests_node(state: CurrentState):
 
 
 # Node to approve the unit tests
-@Node
-def approve_unit_tests_node(state: CurrentState):
+
+def approve_unit_tests(state: SwarmState):
     """
     Approve the unit tests by simulating their execution.
     """
@@ -57,8 +57,8 @@ def approve_unit_tests_node(state: CurrentState):
 
 
 # Node to route to the next step based on unit test approval
-@Node
-def route_unit_tests_node(state: CurrentState) -> Literal["__end__", "assistant"]:
+
+def route_unit_tests_node(state: SwarmState) -> Literal["__end__", "assistant"]:
     """
     Routes the process to the next step based on whether the unit tests passed.
     """
@@ -69,16 +69,16 @@ def route_unit_tests_node(state: CurrentState) -> Literal["__end__", "assistant"
 
 
 # Node to handle the unit tests workflow
-@Node
-def unit_tests_flow(state: CurrentState):
+
+def unit_tests_flow(state: SwarmState):
     """
     Full flow for generating, approving, and routing unit tests.
     """
     # Generate the unit tests
-    state = unit_tests_node(state)
+    state = unit_tests(state)
 
     # Approve the unit tests
-    state = approve_unit_tests_node(state)
+    state = approve_unit_tests(state)
 
     # Route to the next step based on the approval of unit tests
     next_step = route_unit_tests_node(state)
@@ -87,7 +87,7 @@ def unit_tests_flow(state: CurrentState):
 
 
 # Main function to start the unit tests workflow
-def process_unit_tests(state: CurrentState):
+def process_unit_tests(state: SwarmState):
     """
     Starts the Swarm-based process for unit tests and routing to the next step.
     """

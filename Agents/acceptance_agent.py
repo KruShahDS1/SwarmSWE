@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Literal, Any, Union
-from swarm import Node, Message
+from utils import SwarmState
 import logging
 
 
@@ -20,7 +20,7 @@ class AcceptanceAgent(BaseModel):
 
 # Node to generate the acceptance tests
 @Node
-def acceptance_tests_node(state: CurrentState):
+def acceptance_tests(state: SwarmState):
     """
     Generate acceptance tests for the software based on the design documents.
     """
@@ -40,7 +40,7 @@ def acceptance_tests_node(state: CurrentState):
 
 # Node to approve the acceptance tests
 @Node
-def approve_acceptance_tests_node(state: CurrentState):
+def approve_acceptance_tests(state: SwarmState):
     """
     Approve the acceptance tests by simulating their execution.
     """
@@ -58,7 +58,7 @@ def approve_acceptance_tests_node(state: CurrentState):
 
 # Node to route to the next step based on acceptance test approval
 @Node
-def route_acceptance_tests_node(state: CurrentState) -> Literal['approve_unit_tests', 'assistant']:
+def route_acceptance_tests(state: SwarmState) -> Literal['approve_unit_tests', 'assistant']:
     """
     Routes the process to the next step based on whether the acceptance tests passed.
     """
@@ -70,7 +70,7 @@ def route_acceptance_tests_node(state: CurrentState) -> Literal['approve_unit_te
 
 # Node to handle the acceptance tests workflow
 @Node
-def acceptance_tests_flow(state: CurrentState):
+def acceptance_tests_flow(state: SwarmState):
     """
     Full flow for generating, approving, and routing acceptance tests.
     """
@@ -87,7 +87,7 @@ def acceptance_tests_flow(state: CurrentState):
 
 
 # Main function to start the acceptance tests workflow
-def process_acceptance_tests(state: CurrentState):
+def process_acceptance_tests(state: SwarmState):
     """
     Starts the Swarm-based process for acceptance testing and routing to the next step.
     """

@@ -1,6 +1,10 @@
+import sys
+sys.path.append('C:\\Users\\npsom\\anaconda3\\Lib\\site-packages')
+import swarm
 from swarm import Swarm, Agent
-from Agents import *  # Assuming all agents are imported from the Agents module
-import OpenAI as openai
+help(swarm)  # Lists all the modules, classes, and functions in swarm
+from Agents.Agent.py import *  # Assuming all agents are imported from the Agents module
+import openai
 import json
 import os
 from dotenv import load_dotenv

@@ -22,7 +22,7 @@ class SetupAgent(BaseModel):
 
 # Function to generate the requirements.txt content based on the design
 @Node
-def environment_setup_node(state: CurrentState):
+def environment_setup(state: CurrentState):
     """
     Based on the design documents, determine the requirements.txt file.
     """
@@ -43,7 +43,7 @@ def environment_setup_node(state: CurrentState):
 
 # Function to approve the environment setup by testing the requirements.txt
 @Node
-def approve_environment_setup_node(state: CurrentState):
+def approve_environment_setup(state: CurrentState):
     """
     Test the requirements.txt file.
     A shell or script could be used to run the requirements file, but for now we mock the approval.
@@ -58,7 +58,7 @@ def approve_environment_setup_node(state: CurrentState):
 
 # Function to route the environment setup process based on approvals
 @Node
-def route_environment_setup_node(state: CurrentState) -> Literal['approve_acceptance_tests', 'environment_setup']:
+def route_environment_setup(state: CurrentState) -> Literal['approve_acceptance_tests', 'environment_setup']:
     """
     Routes the process to the next step based on whether the environment setup has been approved.
     """
@@ -75,13 +75,13 @@ def environment_setup_flow(state: CurrentState):
     Full flow for environment setup, which includes setting up the environment and approving the setup.
     """
     # First, set up the environment by generating the requirements.txt content
-    state = environment_setup_node(state)
+    state = environment_setup(state)
 
     # Then, approve the environment setup by testing the requirements.txt (or mock the approval in this case)
-    state = approve_environment_setup_node(state)
+    state = approve_environment_setup(state)
 
     # Finally, route to the next step based on approvals
-    next_step = route_environment_setup_node(state)
+    next_step = route_environment_setup(state)
 
     return next_step
 

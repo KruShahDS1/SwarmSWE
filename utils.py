@@ -1,10 +1,29 @@
-from swarm.framework import SwarmTool, SwarmState
+
 from typing import Annotated, Dict, List, Union
 import os
 import subprocess
 import sys
 import shutil
 import copy
+
+class SwarmTool:
+    def __init__(self, name, function):
+        self.name = name
+        self.function = function
+
+    def execute(self, *args, **kwargs):
+        return self.function(*args, **kwargs)
+
+class SwarmState:
+    def __init__(self):
+        self.state = {}
+
+    def update(self, key, value):
+        self.state[key] = value
+
+    def get(self, key, default=None):
+        return self.state.get(key, default)
+
 
 class GetRootDir(SwarmTool):
     """

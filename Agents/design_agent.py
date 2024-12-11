@@ -1,9 +1,10 @@
 from pydantic import BaseModel, Field
 from typing import Union, Literal, Any
+from utils import SwarmState
+
 from software_workflow import SoftwareDesignWorkflow
 import logging
-from swarm import Node, Message
-
+from Agents.prompts import *
 
 class DesignAgent(BaseModel):
     UML_class: str = Field(description="UML class diagram using mermaid syntax")
@@ -18,7 +19,7 @@ class DesignAgent(BaseModel):
         print("Executing Software Design...")
         return {"design": "Basic architecture created based on PRD"}
 
-    @Node
+
     def generate_design_node(self, prd_content: str):
         """
         Generates a design based on the PRD content.
@@ -27,36 +28,36 @@ class DesignAgent(BaseModel):
 
 
 # Function to handle software design process using Swarm nodes
-def software_design(state: CurrentState):
+def software_design(state: SwarmState):
     """
     Designs the markdown files for the software design using Swarm, including prompt handling.
     """
     logging.info("---SOFTWARE DESIGN (Swarm-based with prompt)---")
 
     # If there are approvals, check if all are True, otherwise invoke assistant to handle rejection cases
-    @Node
-    def approval_check_node(state: CurrentState):
+
+    def approval_check_node(state: SwarmState):
         if "approvals" in state:
             if not all(state['approvals'].values()):  # Rejection case
                 assistant(state)
         return state
 
     # Generate the prompt dynamically based on state
-    @Node
-    def prompt_generation_node(state: CurrentState) -> str:
+
+    def prompt_generation_node(state: SwarmState) -> str:
         prompt = DESIGN_PROMPT.format(**state['documents'])  # Assuming DESIGN_PROMPT is pre-defined or imported
         return prompt
 
     # Structured LLM node to invoke and process the prompt
-    @Node
-    def structured_llm_node(state: CurrentState, prompt: str):
+
+    def structured_llm_node(state: SwarmState, prompt: str):
         structured_llm = llm.with_structured_output(Design)
         response = structured_llm.invoke([HumanMessage(content=prompt)])
         return response
 
     # Define the processing flow with Swarm
-    @Node
-    def software_design_flow(state: CurrentState):
+
+    def software_design_flow(state: SwarmState):
         state = approval_check_node(state)  # Perform approval check first
         prompt = prompt_generation_node(state)  # Generate the design prompt
         response = structured_llm_node(state, prompt)  # Invoke the structured LLM with the prompt
@@ -75,7 +76,7 @@ Literal["tools", "approve_software_design"]:
     Determines the next step for software design based on the last AI message.
     In Swarm format.
     """
-    @Node
+
     def get_last_message_node(state: Union[list[Any], dict[str, Any], BaseModel], messages_key: str):
         """
         Retrieves the last AI message from the input state.
@@ -85,21 +86,21 @@ Literal["tools", "approve_software_design"]:
             raise ValueError(f"No messages found in input state: {state}")
         return ai_message
 
-    @Node
-    def determine_route_node(ai_message):
+
+    def determine_route(ai_message):
         """
         Determines the next step (route) based on the AI message content.
         """
         return self.determine_route(ai_message, "approve_software_design")
 
     # Start the Swarm processing flow
-    @Node
+
     def software_design_condition_flow(state: Union[list[Any], dict[str, Any], BaseModel], messages_key: str):
         """
         Process the state to determine the software design condition route.
         """
         ai_message = get_last_message_node(state, messages_key)  # Retrieve the last message
-        next_step = determine_route_node(ai_message)  # Determine the next step
+        next_step = determine_route(ai_message)  # Determine the next step
         return next_step
 
     # Invoke the processing flow and return the result
@@ -116,8 +117,8 @@ class ApproveDesign(BaseModel):
 
 
 # Function to approve software design using Swarm nodes
-@Node
-def approve_software_design_node(state: CurrentState):
+
+def approve_software_design(state: SwarmState):
     """
     LLM-as-a-judge to review the design documents.
     This will check the design's validity and append the approval details.
@@ -144,8 +145,8 @@ def approve_software_design_node(state: CurrentState):
 
 
 # Function to route the software design process based on approvals
-@Node
-def route_software_design_node(state: CurrentState) -> Literal['implementation', 'software_design']:
+
+def route_software_design(state: SwarmState) -> Literal['implementation', 'software_design']:
     """
     Routes to the next step based on the approval status.
     If all approvals are True, route to implementation. Otherwise, return to software design.
@@ -157,22 +158,22 @@ def route_software_design_node(state: CurrentState) -> Literal['implementation',
 
 
 # Main software design flow with Swarm nodes
-@Node
-def software_design_flow(state: CurrentState):
+
+def software_design_flow(state: SwarmState):
     """
     The main flow that will invoke the approve_software_design_node and route_software_design_node.
     """
     # First, approve the software design
-    state = approve_software_design_node(state)
+    state = approve_software_design(state)
 
     # Then, route the software design based on approvals
-    next_step = route_software_design_node(state)
+    next_step = route_software_design(state)
 
     return next_step
 
 
 # Usage of the Swarm-based software design flow
-def process_software_design(state: CurrentState):
+def process_software_design(state: SwarmState):
     """
     Starts the Swarm-based process for reviewing and routing the software design.
     """

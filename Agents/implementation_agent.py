@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Union, Literal, Any
-from swarm import Node, Message
+from Agents.prompts import *
+from utils import SwarmState
 import logging
 
 
@@ -25,7 +26,7 @@ class ImplementationAgent(BaseModel):
 
 # Node to implement the software design
 @Node
-def implementation_node(state: CurrentState):
+def implementation_node(state: SwarmState, IMPLEMENTATION_PROMPT=None):
     """
     Implement the software design based on the setup output and design documents.
     """
@@ -52,7 +53,7 @@ def implementation_node(state: CurrentState):
 
 # Node to approve the implementation
 @Node
-def approve_implementation_node(state: CurrentState):
+def approve_implementation(state: SwarmState):
     """
     Approve the implementation by reviewing the generated code.
     """
@@ -77,8 +78,8 @@ def approve_implementation_node(state: CurrentState):
 
 
 # Node to route to the next step based on implementation approval
-@Node
-def route_implementation_node(state: CurrentState) -> Literal['acceptance_tests', 'implementation']:
+
+def route_implementation(state: SwarmState) -> Literal['acceptance_tests', 'implementation']:
     """
     Routes the process to the next step based on whether the implementation has been approved.
     """
@@ -89,8 +90,8 @@ def route_implementation_node(state: CurrentState) -> Literal['acceptance_tests'
 
 
 # Node to handle the implementation workflow
-@Node
-def implementation_flow(state: CurrentState):
+
+def implementation_flow(state: SwarmState):
     """
     Full flow for implementing and approving the software design.
     """
@@ -98,16 +99,16 @@ def implementation_flow(state: CurrentState):
     state = implementation_node(state)
 
     # Then, approve the implementation based on the generated code
-    state = approve_implementation_node(state)
+    state = approve_implementation(state)
 
     # Finally, route to the next step based on the approval status
-    next_step = route_implementation_node(state)
+    next_step = route_implementation(state)
 
     return next_step
 
 
 # Main function to initiate the implementation workflow
-def process_implementation(state: CurrentState):
+def process_implementation(state: SwarmState):
     """
     Starts the Swarm-based process for implementing and routing the implementation approval.
     """
